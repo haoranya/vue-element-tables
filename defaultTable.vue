@@ -56,86 +56,44 @@ export default {
       tableHeight: '',
       addPrincipalVisible: false,
       selectData: [], // 复选框选中的数据
-      btnArr: [
-        {
-          title: '全部',
-          index: 0
-        },
-        {
-          title: '工程经理',
-          index: ''
-        },
-        {
-          title: '销售经理',
-          index: ''
-        },
-        {
-          title: '维保经理',
-          index: ''
-        },
-        {
-          title: '项目经理',
-          index: ''
-        }
-      ],
       // 查询面板配置
       searchConfigs: [
         {
-          title: '岗位',
-          key: 'nmatnr',
+          title: '测试1',
+          key: 'a',
           type: 'input'
         },
         {
-          title: '岗位类型',
-          key: 'customerName',
+          title: '测试2',
+          key: 'b',
           type: 'input'
         },
         {
-          title: '岗位类型',
-          key: 'customerName',
-          type: 'input'
-        },
-        {
-          title: '岗位',
-          key: 'nmatnr',
-          type: 'input'
-        },
-        {
-          title: '岗位类型',
-          key: 'customerName',
-          type: 'input'
-        },
-        {
-          title: '岗位',
-          key: 'nmatnr',
-          type: 'input'
-        },
-        {
-          title: '岗位类型',
-          key: 'customerName',
+          title: '测试3',
+          key: 'c',
           type: 'input'
         }
       ],
       // 表格列配置
       tableColumns: [
         {
-          prop: 'nmatnr',
-          label: '岗位',
+          prop: 'a',
+          label: '测试1',
           align: 'center'
         },
         {
-          prop: 'property',
-          label: '岗位类型',
+          prop: 'b',
+          label: '测试2',
           align: 'center'
         },
         {
-          prop: 'customerName',
-          label: '履历模板',
+          prop: 'c',
+          label: '测试3',
           align: 'center'
         },
         {
-          prop: 'projectNo',
-          label: '版本号',
+          prop: 'd',
+          label: '测试4',
           align: 'center'
         },
         {
@@ -145,90 +103,68 @@ export default {
           cellTemplate: true
         }
       ],
-      dialogColumns: [
-        {
-          prop: 'radio',
-          label: '单选',
-          width: '50'
-        },
-        {
-          prop: 'displayName',
-          label: '模版代码',
-          align: 'center'
-        },
-        {
-          prop: 'displayName',
-          label: '模版名称',
-          align: 'center'
-        },
-        {
-          prop: 'displayName',
-          label: '版本号',
-          align: 'center'
-        }
-      ], // 弹窗表格的列
       // 表格数据
       tableData: [
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
+          a: '123456',
+          b: '上海',
+          c: 'true'
         },
         {
-          nmatnr: '123456',
-          property: '上海',
-          customerName: 'true'
-        }
+          a: '123456',
+          b: '上海',
+          c: 'true'
+        },
       ],
       pageNo: 1, // 页数
       pageSize: 10, // 条数

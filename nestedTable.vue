@@ -10,13 +10,13 @@
         type="primary"
         icon="el-icon-circle-plus"
         @click="addPricipal('add')"
-      >添加负责人</el-button>
+      >添加</el-button>
       <el-button
         size="mini"
         type="primary"
         icon="el-icon-refresh"
         @click="addPricipal('update')"
-      >更换负责人</el-button>
+      >更换</el-button>
     </div>
     <div class="header-message">
       <i class="el-icon-warning">共有{{ total }}项</i>
@@ -76,11 +76,11 @@ export default {
       columns: [
         {
           prop: 'a',
-          label: '合同号梯号'
+          label: '测试1'
         },
         {
           prop: 'b',
-          label: '大客户名称'
+          label: '测试2'
         },
         {
           prop: 'c',
@@ -95,12 +95,12 @@ export default {
       ],
       searchConfigs: [
         {
-          title: '合同号梯号',
+          title: '测试1',
           key: 'a',
           type: 'input'
         },
         {
-          title: '大客户名称',
+          title: '测试2',
           key: 'b',
           type: 'select',
           options: [
@@ -411,9 +411,7 @@ export default {
       //   QueryPrincipalList(params).then(resp => {
       //     if (resp.code === '2000') {
       //       this.loading = false// 表格预加载
-      //      this.tableData = this.nestedData(resp.table ? resp.table:[])
-      //       console.log(789789)
-      //       console.log(this.tableData)
+      //       this.tableData = this.nestedData(resp.table ? resp.table:[])
       //       this.total = this.tableData.length// 由于是可折叠，数据处理完毕，总数是处理完毕的
       //     }
       //   }).catch(() => {

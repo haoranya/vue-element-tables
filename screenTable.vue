@@ -4,11 +4,10 @@
     <div ref="top" class="top">
       <div class="top-change">
         <div style="width:calc(100% - 100px);">
-          <el-button size="mini" type="primary" @click="exportInfo">导出：</el-button>
           <span class="top-title">信息筛选：</span>
           <el-radio-group v-model="tableKey" @change="tabChange">
-            <el-radio label="eleSalesInfo">电梯信息</el-radio>
-            <el-radio label="eleInstInfo">安装信息</el-radio>
+            <el-radio label="a">信息1</el-radio>
+            <el-radio label="b">信息2</el-radio>
           </el-radio-group>
         </div>
         <div class="table-filter">
@@ -38,56 +37,47 @@
             @row-click="rowClick"
             @filterMethod="filterMethod($event)"
           >
-            <template slot="bismt" slot-scope="scope">
+            <template slot="a" slot-scope="scope">
               <div class="options">
                 <span
                   class="herfItem"
-                  @click="intoDetail(scope.row.matnr)"
-                >{{ scope.row.bismt }}</span>
+                  @click="intoDetail()"
+                >{{ scope.row.a }}</span>
               </div>
             </template>
-            <template slot="nsmhth" slot-scope="scope">
+            <template slot="b" slot-scope="scope">
               <div class="options">
                 <span
                   class="herfItem"
-                  @click="intoDetail(scope.row.matnr)"
-                >{{ scope.row.nsmhth }}</span>
+                  @click="intoDetail()"
+                >{{ scope.row.b }}</span>
               </div>
             </template>
-            <!-- 自定义交货期 -->
+            <!-- 自定义 -->
             <template
-              slot="jhdat"
+              slot="f"
               slot-scope="scope"
             >
               <div class="options">
-                <span>{{ scope.row.jhdat }}</span>
-              </div>
-            </template>
-            <!-- 自定义交货期 -->
-            <!-- 自定义业务员表头 -->
-            <template
-              slot="branc"
-              slot-scope="scope"
-            >
-              <div class="options">
-                {{ scope.row.branc }}
-              </div>
-            </template>
-            <template
-              slot="sales"
-              slot-scope="scope"
-            >
-              <div class="options">
-                {{ scope.row.sales }}
+                <span>{{ scope.row.f }}</span>
               </div>
             </template>
             <!-- 自定义表头 -->
             <template
-              slot="azsta_z"
+              slot="h"
               slot-scope="scope"
             >
               <div class="options">
-                {{ scope.row.azsta_z }}
+                {{ scope.row.h }}
+              </div>
+            </template>
+            <!-- 自定义表头 -->
+            <template
+              slot="i"
+              slot-scope="scope"
+            >
+              <div class="options">
+                {{ scope.row.i }}
               </div>
             </template>
           </baseTable>
@@ -98,7 +88,6 @@
 </template>
 <script>
 import { baseTable, columnFilter } from 'sl-components'
-import '@/platform/platform'// 引入平台检验
 export default {
   name: 'SearchData',
   components: { baseTable, columnFilter },
@@ -142,87 +131,87 @@ export default {
         }
       ], // 表格字段
       searchColumn: [], // 请求字段
-      eleSalesInfoColumns: [
+      aColumns: [
         {
-          prop: 'bismt',
-          label: '合同号梯号',
+          prop: 'a',
+          label: '测试1',
           fixed: 'left'
           // cellTemplate: true
         },
         {
-          prop: 'nsmhth',
-          label: '合同号',
+          prop: 'b',
+          label: '测试2',
           fixed: 'left'
           // cellTemplate: true
         },
         {
-          prop: 'augru',
-          label: '合同状态',
+          prop: 'c',
+          label: '测试3',
           width: '100'
         },
         {
-          prop: 'prjnm',
-          label: '项目名称'
+          prop: 'd',
+          label: '测试4'
         },
         {
-          prop: 'namwe',
-          label: '最终用户名称'
+          prop: 'e',
+          label: '测试5'
         },
         {
-          prop: 'jhdat',
-          label: '交货期',
+          prop: 'f',
+          label: '测试6',
           width: '100',
           type: 'date',
           customTitle: true
         },
         {
-          prop: 'g30dat',
-          label: '最终交货期',
+          prop: 'g',
+          label: '测试7',
           width: '100'
         },
         {
-          prop: 'branc',
-          label: '分公司',
+          prop: 'h',
+          label: '测试8',
           type: 'input',
           customTitle: true
         },
         {
-          prop: 'sales',
-          label: '业务员',
+          prop: 'i',
+          label: '测试9',
           type: 'input',
           customTitle: true
         }
-      ], // 电梯销售表格column
-      eleInstInfoColumns: [
+      ], // a表格column
+      bColumns: [
         {
-          prop: 'bismt',
-          label: '合同号梯号',
+          prop: 'a',
+          label: '测试1',
           fixed: 'left',
           cellTemplate: true
         },
         {
-          prop: 'nsmhth',
-          label: '合同号',
+          prop: 'b',
+          label: '测试2',
           fixed: 'left',
           cellTemplate: true
         },
         {
-          prop: 'traffic_order_no',
-          label: '运单号'
+          prop: 'c',
+          label: '测试3'
         },
         {
-          prop: 'augru',
-          label: '当前所在地址',
+          prop: 'd',
+          label: '测试4',
           width: '150'
         },
         {
-          prop: 'augru',
-          label: '物流状态'
+          prop: 'e',
+          label: '测试4'
         }
-      ], // 合同销售的物流信息字段表格column
+      ], // b表格column
       tableData: [],
-      searchKey: 'eleInfo',
-      tableKey: 'eleSalesInfo'
+      searchKey: 'test',
+      tableKey: 'a'
     }
   },
   created() {
@@ -263,11 +252,6 @@ export default {
     },
     handleClick(e) {
       this.activeName = e.name
-      if (e.name === 'second') {
-        if (this.tableKey === 'contrSales') { // 判断如果是物流处理物流信息
-          this.mapLine(this.currentLoc_address)
-        }
-      }
       this.scrollInit('scrollBottom')
     },
     backClick() {
@@ -295,124 +279,88 @@ export default {
         this.$refs.tables.setLoading(true)
       }, 0)
       switch (this.tableKey) {
-        case 'eleSalesInfo':
-          this.tableColumns = this.eleSalesInfoColumns
-          this.searchColumn = this.eleSalesInfoArr
+        case 'a':
+          this.tableColumns = this.aColumns
+          this.searchColumn = this.aArr
           break
-        case 'eleInstInfo':
-          this.tableColumns = this.eleInstInfoColumns
-          this.searchColumn = this.eleInstInfoArr
+        case 'b':
+          this.tableColumns = this.bColumns
+          this.searchColumn = this.bArr
           break
       }// 筛选表格请求参数以及表格column数据
       this.defaultTableColumns = this.tableColumns// 保存原始表头
       this.oldTableData = [
         {
-          bismt: '1',
-          nsmhth: '1',
-          jhdat: '2016-05-02',
-          branc: '王小虎1',
-          address: '上海市普陀区金沙江路 100 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         },
         {
-          bismt: '2',
-          nsmhth: '2',
-          jhdat: '2016-05-04',
-          branc: '王小虎2',
-          address: '上海市普陀区金沙江路 200 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         },
         {
-          bismt: '3',
-          nsmhth: '3',
-          jhdat: '2016-05-01',
-          branc: '王小虎3',
-          address: '上海市普陀区金沙江路 300 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         },
         {
-          bismt: '4',
-          nsmhth: '4',
-          jhdat: '2016-05-03',
-          branc: '王小虎4',
-          address: '上海市普陀区金沙江路 400 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         },
         {
-          bismt: '1',
-          nsmhth: '1',
-          jhdat: '2016-05-02',
-          branc: '王小虎1',
-          address: '上海市普陀区金沙江路 100 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         },
         {
-          bismt: '2',
-          nsmhth: '2',
-          jhdat: '2016-05-04',
-          branc: '王小虎2',
-          address: '上海市普陀区金沙江路 200 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         },
         {
-          bismt: '3',
-          nsmhth: '3',
-          jhdat: '2016-05-01',
-          branc: '王小虎3',
-          address: '上海市普陀区金沙江路 300 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         },
         {
-          bismt: '4',
-          nsmhth: '4',
-          jhdat: '2016-05-03',
-          branc: '王小虎4',
-          address: '上海市普陀区金沙江路 400 弄',
-          age: '17',
-          nex: '男'
-        },
-        {
-          bismt: '1',
-          nsmhth: '1',
-          jhdat: '2016-05-02',
-          branc: '王小虎1',
-          address: '上海市普陀区金沙江路 100 弄',
-          age: '17',
-          nex: '男'
-        },
-        {
-          bismt: '2',
-          nsmhth: '2',
-          jhdat: '2016-05-04',
-          branc: '王小虎2',
-          address: '上海市普陀区金沙江路 200 弄',
-          age: '17',
-          nex: '男'
-        },
-        {
-          bismt: '3',
-          nsmhth: '3',
-          jhdat: '2016-05-01',
-          branc: '王小虎3',
-          address: '上海市普陀区金沙江路 300 弄',
-          age: '17',
-          nex: '男'
-        },
-        {
-          bismt: '4',
-          nsmhth: '4',
-          jhdat: '2016-05-03',
-          branc: '王小虎4',
-          address: '上海市普陀区金沙江路 400 弄',
-          age: '17',
-          nex: '男'
+          "a": '1',
+          "b": '1',
+          "c": '2016-05-02',
+          "d": '王小虎1',
+          "e": '上海市普陀区金沙江路 100 弄',
+          "f": '17',
+          "g": '男'
         }
       ]
       this.tableData = this.oldTableData
@@ -425,7 +373,6 @@ export default {
     initColumnFilter() {
       console.log(this.tableColumns)
       const currentTableColumn = {
-        // nextTableColumn: this[this.searchKey + this.tableKey], // 记录
         defaultCheckboxItem: this.tableColumns, // 默认的
         type: this.searchKey + this.tableKey// 表格的类型
       }
@@ -451,33 +398,6 @@ export default {
       const tableColumnType = this.searchKey + this.tableKey
       this[tableColumnType] = this.tableColumns// 保存当前表格的过滤后的表头
     }, // 表头的过滤的事件
-    exportInfo() {
-      import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']// 要导出后表头是什么，可以跟tableDate中的表头不一致
-        const filterVal = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-        const data = this.formatJson(filterVal, this.tableData)
-        // const data = this.tableData;
-        excel.export_json_to_excel({
-          header: tHeader,
-          data,
-          filename: 'table-list' // 导出文件的名，自定义就好
-        })
-        // this.downloadLoading = false;
-      })
-    },
-    // 下载方法中，需要用到的格式化json的方法
-    formatJson(filterVal, jsonData) {
-      return jsonData.map(v =>
-        filterVal.map(j => {
-          if (j === 'id') { // 此处如没有要格式化的列，可以不用此判断
-            // return parseTime(v[j])
-            return v[j]
-          } else {
-            return v[j]
-          }
-        })
-      )
-    },
     scrollInit(key) {
       // alert('计算')
       this.$nextTick(() => {
